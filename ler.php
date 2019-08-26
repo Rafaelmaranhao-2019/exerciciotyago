@@ -14,32 +14,27 @@
 <body>
 
 <?php
-$nome=$_POST['f_nome'];
-
-$msg=$_POST['f_msg'];
-
-
-$conteudo=$msg."/r/n".$nome."/r/n";
 
 
 
-$arquivo=fopen("visitas.txt","a");
+
+$arquivo=fopen("visitas.txt","r");
 
 
-fwrite($arquivo,$conteudo);
+while(!feof($arquivo)){
+echo fgets($arquivo, 4096);
+echo "<br/>".fgets($arquivo,100);
+echo "<br/><br/>";
 
 
-echo "mensagem gravada: $conteudo";
-
+}
 
 fclose($arquivo);
 
 
-
-
 ?>
 
-<hr/>
+
 <a href="index.html" target="_self">voltar</a>
 
 </body>
